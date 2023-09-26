@@ -8,9 +8,9 @@ test("Check posts body length",  async () => {
         baseURL: baseUrl
     });
 
-    let res = await (await context.get(`/posts/`)).json();
+    let res = await (await context.get(`/posts`)).json();
 
-    for (let i = 0; i < 100; i++) {      
+    for (let i = 0; i < res.length; i++) {      
         expect.soft(res[i].body.length, `Body length should be correct for response with id ${i + 1}`).toBeGreaterThan(expectedLength);
     }
 })
